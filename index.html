@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шаблоны хой4</title>
+  
+  <style>
+    /* 1. Общие настройки и сброс отступов */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    /* 2. Современная темная тема для игрового портала */
+    body {
+      background-color: #1a1f26; /* Приятный темно-серый цвет фона */
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Красивый современный шрифт */
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      color: #f1f5f9; /* Чистый светлый текст */
+    }
+
+    /* === СТИЛЬНАЯ СОВРЕМЕННАЯ ШАПКА === */
+    .site-header {
+      background-color: #11151c; /* Более глубокий темный цвет для шапки */
+      border-bottom: 1px solid #2d3748; /* Тонкая аккуратная разделительная линия */
+      padding: 18px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .logo span {
+      color: #38bdf8; /* Красивый неоново-голубой акцент */
+    }
+
+    .header-nav ul {
+      display: flex;
+      list-style: none;
+      gap: 24px;
+    }
+
+    .header-nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      transition: color 0.2s ease, border-bottom 0.2s ease;
+      padding-bottom: 4px;
+    }
+
+    .header-nav a:hover {
+      color: #38bdf8; /* Подсветка при наведении */
+    }
+
+    /* Сетка сайта */
+    .site-wrapper {
+      max-width: 1200px;
+      width: 100%;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      gap: 30px;
+      flex: 1;
+    }
+
+    /* Главная колонка с контентом (Оформлена как карточка) */
+    .main-content {
+      flex: 3;
+      background: #1e2530; /* Контрастный фон для блока с текстом */
+      padding: 35px;
+      border-radius: 12px; /* Закругленные углы, как на современных сайтах */
+      border: 1px solid #2d3748;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .main-content h1 {
+      color: #fff;
+      margin-bottom: 20px;
+      font-size: 32px;
+      font-weight: 700;
+    }
+
+    .main-content p {
+      color: #cbd5e1;
+      margin-bottom: 20px;
+      line-height: 1.7;
+      font-size: 16px;
+    }
+
+    /* Аккуратный информационный блок */
+    .highlight-box {
+      background: rgba(56, 189, 248, 0.06);
+      border-left: 4px solid #38bdf8; /* Голубая аккуратная полоса */
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 25px 0;
+      color: #e2e8f0;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* Боковая панель меню (Категории) */
+    .sidebar {
+  flex: 1;
+  background: #1e2530;
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #2d3748;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  height: fit-content; /* Обязательно оставляем, чтобы блок не растягивался на всю высоту */
+
+  /* ДОБАВЬТЕ ЭТИ ДВЕ СТРОЧКИ: */
+  position: sticky;    /* Включает режим "липкого" элемента */
+  top: 100px;          /* Отступ от верхнего края экрана, когда блок зафиксирован (с учетом высоты шапки) */
+}
+
+    .sidebar h3 {
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .sidebar-nav ul {
+      list-style: none;
+    }
+
+    .sidebar-nav li {
+      margin-bottom: 12px;
+    }
+
+    .sidebar-nav a {
+      display: block;
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .sidebar-nav a:hover {
+      background: #242f3e; /* Легкий фон под пунктом меню при наведении */
+      color: #38bdf8;
+      padding-left: 16px;
+    }
+
+    /* === СТИЛЬНЫЙ СОВРЕМЕННЫЙ ПОДВАЛ === */
+    .site-footer {
+      background-color: #11151c;
+      color: #64748b;
+      padding: 50px 20px;
+      border-top: 1px solid #2d3748; /* Аккуратная тонкая линия перехода вместо толстой рамки */
+      margin-top: 60px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 20px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .footer-section p {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-section a:hover {
+      color: #38bdf8;
+    }
+    
+    .copyright {
+      margin-top: 15px;
+      font-size: 13px;
+    }
+.main-content img {
+  max-width: 100%; /* Картинка никогда не станет шире своей колонки */
+  height: auto;    /* Пропорции картинки не исказятся */
+  display: block;  /* Убирает лишние отступы снизу */
+  margin: 20px 0;  /* Добавляет красивые отступы сверху и снизу от картинки */
+  border-radius: 8px; /* Немного закруглит углы картинки под стиль сайта */
+}
+  </style>
+</head>
+<body>
+
+  <!-- ШАПКА САЙТА -->
+  <header class="site-header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="#">HOI4<span>ШАБЛОНЫ</span></a>
+      </div>
+      <nav class="header-nav">
+        <ul>
+          <li><a href="#">Главная</a></li>
+         
+  <li><a href="#site-footer">О нас</a></li>
+          
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ОСНОВНАЯ ЗОНА С СЕТКОЙ КОНТЕНТА -->
+  <div class="site-wrapper">
+    
+    <!-- СТАТЬЯ -->
+    <main class="main-content">
+      <h1 id="vvedenie">Актуальные шаблоны дивизий в Hearts of Iron IV</h1>
+      
+      <p>В актуальной версии игры правильный подбор ширины фронта (Combat Width) и состава батальонов определяет успешность ведения войны. Использование неэффективных или устаревших билдов дивизий неизбежно приведет к высоким потерям снаряжения на складах и потере людских ресурсов.</p>
+      
+      <div class="highlight-box">
+        <strong>Важное примечание по мете:</strong> Оптимальная ширина фронта для оборонительных пехотных дивизий в текущих реалиях составляет от 15 до 21 единиц. Для танковых кулаков прорыва лучше всего использовать ширину фронта около 30-35 единиц.
+      </div>
+      
+      <p>Основу любой армии по-прежнему составляет пехота. Базовый шаблон «9 касок и 1 артиллерия» (9 пехотных батальонов и 1 батальон артиллерии) с ротами поддержки (саперы, ПВО и арта) показывает отличную стойкость при минимальной стоимости производства.</p>
+      
+      <p>Для прорыва сложных линий обороны противника используйте комбинацию средних танков и моторизованной пехоты. Помните, что показатель организации (Organization) такой дивизии не должен падать ниже 30 единиц.</p>
+      <p id="maj"><h1>Пехота для мажоров</h1></p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_671927d4d72f8c2fee01b3c9/scale_1200">
+      <p>Универсальный противопехотный шаблон, подходит для сражения на равнинах.</p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_6719286dde84c77abf886e36/scale_1200">
+      <p>Шаблон, более подстроенный под защиту и возможное отсутствие авиации, подходит для сражения в лесах.</p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_67192880d72f8c2fee02b095/scale_1200">
+      <p>Полностью противопехотный шаблон, подходит для сражения в лесах.</p>
+      <p id="min"><h1>Пехота для миноров</p></h1>
+      <p>Пехота для миноров является переходным шаблоном, не рекомендую использовать его до конца игры и по возможности, заменить его на один из шаблонов выше.</p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_671928e2a9a6af1356fa70db/scale_1200">
+      <p>Дешёвый оборонительный шаблон, подходит для сражения в лесах.</p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_671927d406ed2b08d91c8015/scale_1200">
+      <p>Бюджетная оборонительная дивизия («стена») для малых стран. Отлично держит оборону за счет артиллерии и ПВО, но совершенно не подходит для атаки.<p>
+      <p id="srtan"><h1>Шаблон среднего танка</h1></p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_671927d4250262394dda10e0/scale_1200">
+      <p>Создан для прорыва обороны и сражения с вражескими танками, имеет высокий показатель прорыва.</p>
+      <p id="SAY"><h1>Шаблон средней САУ</h1></p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_671927d46257ba6e8dee2608/scale_1200">
+      <p>Какой танковый шаблон без САУ? САУ обеспечивает огромную противопехотную атаку, что облегчает прорыв против "пехотный орд".</p>
+      <p id="tandiv"><h1>Шаблон танковой дивизии</h1></p>
+      <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6719275e4bc97a1ccb03c24c_671927d5f5b3920f593f637c/scale_1200">
+      <p>Шаблон танковой дивизии в основном опирается на ширину фронта 35, для хорошего стака на равнине.</p>
+    </main>
+
+    <!-- БОКОВОЕ МЕНЮ (РУБРИКИ) -->
+    <aside class="sidebar">
+      <h3>Разделы гайдов</h3>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#vvedenie">Введение</a></li>
+          <li><a href="#maj">Пехота для мажоров</a></li>
+          <li><a href="#min">Пехота для миноров</a></li>
+          <li><a href="#srtan">Шаблон средних танков</a></li>
+          <li><a href="#SAY">Шаблон САУ</a></li>
+          <li><a href="#tandiv">Шаблон танковой дивизии</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+  </div>
+
+  <!-- ПОДВАЛ САЙТА -->
+  <footer class="site-footer" id="site-footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>О проекте</h3>
+        <p>Сайт создан для помощи игрокам в освоении механикHearts of Iron IV. Здесь собраны лучшие тактики, мета-билды и разборы обновлений от игрового сообщества.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Полезные ссылки</h3>
+        <ul>
+          <li><a href="https://top-mods.ru/mods/hoi-4">Каталог лучших модов</a></li>
+          <li><a href="https://kailniris.github.io/hoi4-combat-width-calculator/">Калькулятор ширины фронта</a></li>
+          <li><a href="#">Официальный Discord</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Права</h3>
+        <p class="copyright">&copy; 2026 HOI4ШАБЛОНЫ. Все права защищены. Все названия игр принадлежат Paradox Interactive.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
