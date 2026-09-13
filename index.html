@@ -33,13 +33,15 @@
       z-index: 100;
     }
 
-    .header-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+   .header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* Позволит меню перенестись под логотип на узком экране */
+  gap: 15px;
+}
 
     .logo a {
       color: #fff;
@@ -73,15 +75,25 @@
     }
 
     /* Сетка сайта */
-    .site-wrapper {
-      max-width: 1200px;
-      width: 100%;
-      margin: 40px auto;
-      padding: 0 20px;
-      display: flex;
-      gap: 30px;
-      flex: 1;
-    }
+  .site-wrapper {
+  max-width: 1200px;
+  width: 100%;
+  margin: 20px auto;
+  padding: 0 15px; /* Немного уменьшили отступы для мобильных */
+  display: flex;
+  flex-direction: column; /* ПО УМОЛЧАНИЮ: блоки идут друг под другом (для мобильных) */
+  gap: 20px;
+  flex: 1;
+}
+
+/* На компьютерах (когда экран шире 768px) возвращаем блоки в ряд */
+@media (min-width: 768px) {
+  .site-wrapper {
+    flex-direction: row; 
+    margin: 40px auto;
+    gap: 30px;
+  }
+}
 
     /* Главная колонка с контентом (Оформлена как карточка) */
     .main-content {
@@ -127,11 +139,15 @@
   border-radius: 12px;
   border: 1px solid #2d3748;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  height: fit-content; /* Обязательно оставляем, чтобы блок не растягивался на всю высоту */
+  height: fit-content;
+}
 
-  /* ДОБАВЬТЕ ЭТИ ДВЕ СТРОЧКИ: */
-  position: sticky;    /* Включает режим "липкого" элемента */
-  top: 100px;          /* Отступ от верхнего края экрана, когда блок зафиксирован (с учетом высоты шапки) */
+/* Фиксируем блок на экране ТОЛЬКО на компьютерах */
+@media (min-width: 768px) {
+  .sidebar {
+    position: sticky;
+    top: 100px;
+  }
 }
 
     .sidebar h3 {
@@ -176,14 +192,13 @@
     }
 
     .footer-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 30px;
-    }
-
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* Разрешает колонкам подвала вставать друг под друга */
+  justify-content: space-between;
+  gap: 30px;
+}
     .footer-section {
       flex: 1;
       min-width: 250px;
